@@ -1,0 +1,4844 @@
+; Menu?
+label_048000:
+	SEI
+	CLD
+	CLC
+	XCE
+	REP #$10
+	REP #$20
+	LDA #$0000
+	TCD
+	LDA #$1FFF
+	TCS
+	SEP #$20
+	LDA #$00
+	PHA
+	PLB
+	LDA #$80
+	STA $2100
+	STZ $2101
+	LDA #$01
+	STA $2105
+	STZ $2106
+	LDA #$78
+	STA $2107
+	LDA #$7C
+	STA $2108
+	STZ $2109
+	STZ $210A
+	STZ $210B
+	STZ $210C
+	STZ $210D
+	STZ $210D
+	STZ $210E
+	STZ $210E
+	STZ $210F
+	STZ $210F
+	STZ $2110
+	STZ $2111
+	STZ $2111
+	STZ $2112
+	STZ $2112
+	STZ $2113
+	STZ $2113
+	STZ $2114
+	STZ $2114
+	LDA #$80
+	STA $2115
+	STZ $211A
+	STZ $2123
+	STZ $2124
+	STZ $2125
+	STZ $2126
+	STZ $2127
+	STZ $2128
+	STZ $2129
+	STZ $212A
+	STZ $212B
+	STZ $212C
+	STZ $212D
+	STZ $212E
+	STZ $212F
+	STZ $2130
+	STZ $2131
+	STZ $2132
+	STZ $2133
+	LDA #$01
+	STA $4200
+	LDA #$FF
+	STA $4201
+	JSR label_0480F9
+	LDX #$0000
+	STX $2116
+	LDY #$8000
+
+label_0480BA:
+	STX $2118
+	DEY
+	BNE label_0480BA
+	LDX #$8000
+	STX $2102
+	LDY #$0110
+
+label_0480C9:
+	STZ $2104
+	STZ $2104
+	DEY
+	BNE label_0480C9
+	STZ $2121
+	LDY #$0100
+
+label_0480D8:
+	STZ $2122
+	STZ $2122
+	DEY
+	BNE label_0480D8
+
+label_0480E1:
+	LDA $4210
+	BPL label_0480E1
+
+label_0480E6:
+	LDA $4210
+	BPL label_0480E6
+	LDA #$01
+	STA $0010
+	LDA #$81
+	STA $4200
+	CLI
+
+label_0480F6:
+	JMP label_0480F6
+
+label_0480F9:
+	REP #$30
+	SEP #$20
+	LDX #$0000
+
+label_048100:
+	LDA $810E,X
+	STA $7F0000,X
+	INX
+	CPX #$1ED3
+	BNE label_048100
+	RTS
+	REP #$30
+	PHX
+	PHY
+	TAY
+	SEP #$30
+	LDA $0000
+	PHA
+	LDA $0001
+	PHA
+	LDA $0002
+	PHA
+	LDA $0003
+	PHA
+	LDA $0006
+	PHA
+	LDA #$FA
+	STA $0006
+	REP #$30
+	TYA
+	AND #$00FF
+	ASL A
+	TAY
+	LDA #$00CB
+	STA $0000
+	LDA #$007F
+	STA $0002
+	LDA [$00],Y
+	TAY
+	STZ $0000
+	SEP #$20
+
+label_04814A:
+	LDA $0006
+	STA $2140
+	REP #$20
+	LDA #$BBAA
+	CMP $2140
+	SEP #$20
+	BNE label_04814A
+	LDA #$CC
+	JML $7F007C
+	LDA [$00],Y
+	INY
+	XBA
+	LDA #$00
+	JML $7F0069
+
+label_04816C:
+	XBA
+	LDA [$00],Y
+	INY
+	XBA
+
+label_048171:
+	CMP $2140
+	BNE label_048171
+	INC A
+	REP #$20
+	STA $2140
+	SEP #$20
+	DEX
+	BNE label_04816C
+
+label_048181:
+	CMP $2140
+	BNE label_048181
+
+label_048186:
+	ADC #$03
+	BEQ label_048186
+	PHA
+	LDA [$00],Y
+	XBA
+	INY
+	LDA [$00],Y
+	XBA
+	TAX
+	INY
+	LDA [$00],Y
+	XBA
+	INY
+	LDA [$00],Y
+	STA $2143
+	INY
+	XBA
+	STA $2142
+	CPX #$0001
+	LDA #$00
+	ROL A
+	STA $2141
+	ADC #$7F
+	PLA
+	STA $2140
+
+label_0481B1:
+	CMP $2140
+	BNE label_0481B1
+	BVC label_0481BC
+	JML $7F0054
+
+label_0481BC:
+	SEP #$30
+	PLA
+	STA $0006
+	PLA
+	STA $0003
+	PLA
+	STA $0002
+	PLA
+	STA $0001
+	PLA
+	STA $0000
+	REP #$30
+	PLY
+	PLX
+	SEP #$30
+	RTL
+	SBC $7100,X
+	ORA ($FD,X)
+	ORA ($CB,X)
+	COP #$AF
+	ORA $DC
+	TSB $89
+	ORA $EE
+	ASL $D5
+	ORA [$96]
+	ORA #$7B
+	PHD
+	EOR $0C
+	AND [$0E]
+	CPX $0F
+	LDA $6710,Y
+	ORA ($2F),Y
+	ORA ($58)
+	ORA ($F8,S),Y
+	ORA ($E9,S),Y
+	TRB $D1
+	ORA $C6,X
+	ORA [$AC],Y
+	CLC
+	CMP $2B1A
+	ORA $006B,X
+	JSR $0D0D
+	BMI label_04821F
+	PHA
+	ORA $0D57
+	ROR $0D
+	ADC ($0D,S),Y
+	DEY
+	ORA $0D89
+	TXA
+
+label_04821F:
+	ORA $06
+	LDY #$1C
+	ORA ($04,X)
+	PHP
+	ASL $64
+	ORA [$3C]
+	PHP
+	ORA #$09
+	ORA $1D
+	TRB $1A
+	BRK #$01
+	INC A
+	COP #$78
+	ORA [$1C],Y
+	ORA ($04,X)
+	BRK #$06
+	STX $07,Y
+	AND ($08)
+	PHP
+	ORA #$03
+	ORA $1715,X
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND [$08],Y
+	PHP
+	ORA #$03
+	ORA $1715,X
+	TRB $0401
+
+label_048258:
+	BRK #$06
+	INY
+	ORA [$50]
+	PHP
+
+label_04825E:
+	ORA ($09),Y
+	COP #$17
+	TRB $0401
+	BRK #$04
+	BRK #$04
+	BRK #$0B
+	COP #$06
+	INY
+	ORA [$64]
+	PHP
+	TSB $09
+
+label_048273:
+	COP #$1D
+	ORA $1717,Y
+	ORA [$17],Y
+
+label_048279:
+	BRK #$00
+	BRK #$00
+	BRK #$83
+	BRK #$20
+	ORA $300D
+	ORA $0D54
+	ADC $0D7E0D
+	PHB
+	ORA $0DA0
+	LDA ($0D,X)
+	LDX #$05
+	ASL $A0
+	TRB $0401
+	PHP
+	ASL $64
+	ORA [$3C]
+
+label_04829E:
+	PHP
+	ASL A
+	ORA #$03
+	ORA $1A14,X
+	BRK #$01
+	INC A
+	COP #$78
+	INY
+	TAY
+	XBA
+	TAX
+	BRA label_048258
+	BRA label_048258
+	BRA label_04825E
+	BRA label_04829E
+	ORA [$1C],Y
+	ORA ($04,X)
+
+label_0482B9:
+	BRK #$06
+	STX $07,Y
+	AND ($08)
+	PHP
+	ORA #$03
+	ORA $C815,X
+	TAY
+	XBA
+	TAX
+	BRA label_048273
+	BRA label_048273
+	BRA label_048279
+	BRA label_0482B9
+	ORA [$1C],Y
+	ORA ($04,X)
+	BRK #$06
+	STX $07,Y
+	AND [$08],Y
+	PHP
+	ORA #$03
+	ORA $1715,X
+	TRB $0401
+	BRK #$06
+	INY
+	ORA [$50]
+	PHP
+	ORA ($09),Y
+	COP #$17
+	TRB $0401
+	BRK #$04
+	BRK #$04
+	BRK #$0B
+	COP #$06
+	INY
+	ORA [$64]
+	PHP
+	TSB $09
+	COP #$1D
+	ORA $1717,Y
+	ORA [$17],Y
+	BRK #$00
+	BRK #$00
+	BRK #$C5
+	BRK #$20
+
+label_04830D:
+	ORA $300D
+
+label_048311:
+	ORA $0D5F
+	STA ($0D)
+
+label_048315:
+	CLV
+	ORA $0DC9
+	SEP #$0D
+	SBC $0D
+	CPX $05
+	ASL $A0
+	TRB $0401
+	PHP
+	ASL $64
+	ORA [$3C]
+	PHP
+	ASL A
+	ORA #$03
+	ORA $1A14,X
+	BRK #$01
+
+label_048333:
+	INC A
+	COP #$78
+	CMP ($A0,X)
+	INX
+	CPY #$A8
+	LDX $AA
+	INX
+	CPX #$E0
+	CMP ($A0,X)
+	INX
+	CPY #$A8
+	LDX $AA
+	INX
+	CPX #$E0
+	ORA [$0D],Y
+	AND $17,X
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND ($08)
+	PHP
+	ORA #$03
+	ORA $C115,X
+	LDY #$C8
+	LDY #$C8
+	LDY #$A8
+	LDX $AA
+	INY
+	LDY #$C8
+	LDY #$A8
+	BRA label_04830D
+	BRA label_048311
+	BRA label_048315
+	BRA label_048333
+	LDY #$C8
+	LDY #$C8
+	LDY #$A8
+	LDX $AA
+	INX
+	CPX #$E0
+	ORA [$0D],Y
+	ADC ($17,X)
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND [$08],Y
+	PHP
+	ORA #$03
+	ORA $C115,X
+	LDY #$E8
+	CPY #$A8
+	LDX $AA
+	INX
+	CPX #$E0
+	CMP ($A0,X)
+	INX
+	CPY #$A8
+	LDX $AA
+	INX
+	CPX #$E0
+	ORA [$0D],Y
+	STY $17,X
+	TRB $0401
+	BRK #$06
+	INY
+	ORA [$50]
+	PHP
+	ORA ($09),Y
+	COP #$20
+	ORA [$0D],Y
+	TSX
+	ORA [$1C],Y
+	ORA ($04,X)
+	BRK #$04
+	BRK #$04
+	BRK #$0B
+	COP #$06
+	INY
+	ORA [$64]
+	PHP
+	TSB $09
+	COP #$1D
+	ORA $1720,Y
+	ORA $17CB
+	ORA [$17],Y
+	ORA [$00],Y
+	BRK #$00
+	BRK #$00
+	STP
+	BRK #$20
+	ORA $300D
+	ORA $0D4C
+	STA $A00D
+	ORA $0DDF
+	SED
+	ORA $0DF9
+	PLX
+	ORA $05
+	BRK #$1C
+	ORA ($04,X)
+	PHP
+	ASL $64
+	ORA [$3C]
+	PHP
+	ORA #$09
+	ORA $1D
+	TRB $1A
+	BRK #$01
+	INC A
+	COP #$78
+	CPX #$16
+	ORA $1735
+
+label_048407:
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND ($08)
+
+label_048411:
+	PHP
+	ORA #$03
+	ORA $AC15,X
+	LDY $ACB8
+	DEC $B3,X
+	LDA $D6,X
+	DEC $F5,X
+	TAX
+	TAX
+	LDX $AA,Y
+	PEI ($B1)
+	LDA ($D4,S),Y
+	TAY
+	LDY $AA,X
+	LDA [$CA]
+	LDA [$A7]
+	LDA ($A7,S),Y
+	CMP ($AE),Y
+	BCS label_048407
+	CMP ($F3),Y
+	LDA [$A7]
+	LDA ($A7,S),Y
+	CMP ($AE),Y
+	BCS label_048411
+	LDX #$A4
+	LDA $A7
+	LDA #$AB
+	ASL $0D,X
+	LSR $1C17
+	ORA ($04,X)
+	BRK #$06
+	STX $07,Y
+	AND [$08],Y
+	PHP
+	ORA #$03
+	ORA $2015,X
+
+label_048459:
+	ASL $0D,X
+	STA $011C17
+	TSB $00
+	ASL $C8
+
+label_048463:
+	ORA [$50]
+	PHP
+	ORA ($09),Y
+	COP #$AC
+	LDY $ACB8
+	DEC $B3,X
+	LDA $D6,X
+	DEC $F5,X
+	TAX
+	TAX
+	LDX $AA,Y
+
+label_048476:
+	PEI ($B1)
+	LDA ($D4,S),Y
+	TAY
+	LDY $AA,X
+	LDA [$CA]
+
+label_04847F:
+	LDA [$A7]
+
+label_048481:
+	LDA ($A7,S),Y
+	CMP ($AE),Y
+
+label_048486:
+	BCS label_048459
+	CMP ($F3),Y
+	LDA [$A7]
+
+label_04848B:
+	LDA ($A7,S),Y
+	CMP ($AE),Y
+	BCS label_048463
+	LDX #$A4
+	LDA $A7
+	LDA #$AB
+	ASL $0D,X
+	LDX #$17
+	TRB $0401
+	BRK #$04
+	BRK #$04
+	BRK #$0B
+	COP #$06
+	INY
+	ORA [$64]
+	PHP
+	TSB $09
+
+label_0484AC:
+	COP #$1D
+	ORA $1620,Y
+	ORA $17E1
+	ORA [$17],Y
+	ORA [$00],Y
+
+label_0484B9:
+	BRK #$00
+	BRK #$00
+
+label_0484BC:
+	BIT $01
+
+label_0484BE:
+	JSR $0D0D
+	BMI label_0484D1
+	ADC [$0D],Y
+
+label_0484C6:
+	LDA $0E,X
+	ORA [$0E],Y
+	PLP
+	ASL $0E41
+	WDM $0E
+	EOR $05
+
+label_0484D1:
+	TSB $20
+	TRB $0401
+	PHP
+	ASL $64
+	ORA [$3C]
+	PHP
+	BPL label_0484E8
+	ORA $1D
+	TRB $1A
+	BRK #$01
+	INC A
+	COP #$78
+
+label_0484E8:
+	LDA $80
+	STX $A8
+	BRA label_048476
+	INY
+
+label_0484EF:
+	CPY #$AA
+	BRA label_04847F
+
+label_0484F2:
+	LDA $8D80
+	CMP $A5C0
+
+label_0484F7:
+
+label_0484F8:
+	BRA label_048481
+	TAY
+	BRA label_048486
+
+label_0484FD:
+	INY
+	INY
+	TAX
+	BRA label_04848B
+	LDX $80
+	STX $C6
+	CPY #$C5
+	INY
+
+label_04850A:
+	CMP ($C5,X)
+	CMP $C6
+	DEC $CC
+
+label_04850F:
+
+label_048510:
+	SBC $E0
+	CPX #$E0
+	ASL $0D,X
+
+label_048516:
+	AND $17,X
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND ($08)
+	PHP
+	ORA #$03
+	ORA $A115,X
+	BRA label_0484AC
+	LDA $80
+
+label_04852A:
+	STA $C5
+	CPY #$A6
+	BRA label_0484B9
+
+label_048530:
+	TAX
+	BRA label_0484BE
+	DEX
+	CPY #$A1
+
+label_048536:
+	BRA label_0484BC
+	LDA $80
+	STA $C5
+
+label_04853C:
+	CMP $A6
+	BRA label_0484C6
+	LDA $80,S
+	STA $C3,S
+	CPY #$C1
+	CMP $C8
+	CMP ($CB,X)
+	CMP $C3
+	INY
+	SBC ($E0,X)
+	CPX #$E0
+	ASL $0D,X
+	ADC $1C17,Y
+	ORA ($04,X)
+	BRK #$06
+	STX $07,Y
+	AND [$08],Y
+	PHP
+	ORA #$03
+	ORA $A115,X
+	BRA label_0484EF
+	TAX
+	BRA label_0484F2
+	LDY #$80
+	DEY
+	TAX
+	BRA label_0484F8
+	LDX $80
+	STA ($A3,X)
+	BRA label_0484F7
+	LDY #$80
+	STA ($A3,X)
+	BRA label_0484FD
+	LDA ($80,X)
+	DEY
+	TAX
+	BRA label_04850A
+	LDY #$80
+	DEY
+	TAX
+	BRA label_048510
+	LDX $80
+	STA ($A3,X)
+	BRA label_04850F
+	LDY #$80
+	STA ($A3,X)
+	BRA label_048516
+	CMP ($CB,X)
+	DEX
+	INY
+	WAI
+	DEC $C3
+	INY
+	LDA ($80,X)
+	DEY
+	TAX
+	BRA label_04852A
+	LDY #$80
+	DEY
+	TAX
+	BRA label_048530
+	LDA ($80,X)
+	DEY
+	TAX
+	BRA label_048536
+	LDY #$80
+	DEY
+	TAX
+	BRA label_04853C
+	ASL $0D,X
+	LDA [$17],Y
+	TRB $0401
+	BRK #$06
+	INY
+	ORA [$50]
+	PHP
+	ORA ($09),Y
+	COP #$20
+	ASL $0E,X
+	ORA $1C17,Y
+	ORA ($04,X)
+	BRK #$04
+	BRK #$04
+	BRK #$0B
+	COP #$06
+	INY
+	ORA [$64]
+	PHP
+	TSB $09
+	COP #$1D
+	ORA $1620,Y
+	ASL $172A
+	ORA [$17],Y
+	ORA [$00],Y
+	BRK #$00
+	BRK #$00
+	LDY $00
+	JSR $0D0D
+	BMI label_0485FE
+	PHY
+	ORA $0D7B
+	STA [$0D],Y
+	TAY
+	ORA $0DC1
+	REP #$0D
+	CMP $05
+
+label_0485FE:
+	ORA $80
+	TRB $0401
+	PHP
+	ASL $64
+	ORA [$3C]
+	PHP
+	ORA #$09
+	ORA $1D
+	TRB $1A
+	BRK #$01
+	INC A
+	COP #$78
+	LDA $ADAF
+	DEX
+	LDX $C3
+	PLB
+	INY
+	LDX $C3
+	LDY #$C5
+	LDY #$C6
+	LDY #$17
+	ORA $1735
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND ($08)
+	PHP
+	ORA #$03
+	ORA $AD15,X
+	LDA $A6CAAD
+	CMP $AB
+	INY
+	LDX $C3
+	LDY #$C5
+	LDY #$C6
+	LDY #$17
+	ORA $175C
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND [$08],Y
+	PHP
+	ORA #$03
+	ORA $ED15,X
+	CPY #$EF
+	CPY #$D2
+	LDY #$D1
+	LDY #$D2
+	LDY #$17
+	ORA $177D
+	TRB $0401
+	BRK #$06
+	INY
+	ORA [$50]
+	PHP
+	ORA ($09),Y
+	COP #$20
+	ASL $0D,X
+	STA $1C17,Y
+	ORA ($04,X)
+	BRK #$04
+	BRK #$04
+	BRK #$0B
+	COP #$06
+	INY
+	ORA [$64]
+	PHP
+	TSB $09
+	COP #$1D
+	ORA $1720,Y
+	ORA $17AA
+	ORA [$17],Y
+	ORA [$00],Y
+	BRK #$00
+	BRK #$00
+	JML $0D2001
+	ORA $0D30
+	LDA $390E,Y
+	ASL $0E4C
+	EOR $790E,X
+	ASL $0E7A
+	TDC
+	ORA $07
+	BRK #$1C
+	ORA ($04,X)
+	PHP
+	ASL $64
+	ORA [$3C]
+	PHP
+	ORA #$09
+	ORA $1D
+	TRB $1A
+	BRK #$01
+	INC A
+	COP #$78
+	LDX #$A2
+	CMP $C3
+	LDA $A2,S
+	LDA $A5,S
+	CMP [$C7]
+	LDA [$A6]
+	LDA [$A8]
+	DEX
+	DEX
+	TAX
+	LDA #$AA
+	LDA $C7C0EA
+	INY
+	TAY
+	LDA [$C5]
+	INY
+	CMP [$A7]
+	LDA $C3
+	CMP [$C5]
+	REP #$C2
+	CMP $E5
+	CPY #$A2
+	LDX #$C3
+	CMP $A3
+	LDX #$A3
+	LDA $C7
+	CMP [$A7]
+	LDX $A7
+	TAY
+	DEX
+	DEX
+	TAX
+	LDA #$AA
+	LDA $C7C0EA
+	CPY $C8CA
+	CMP [$C5]
+	CMP $C2
+	CMP $C5
+	LDA [$A8]
+	CMP [$C5]
+	SBC $AA
+	LDA $A5,S
+	LDA [$E8]
+	INX
+	TAY
+	LDA [$E8]
+	CMP #$CA
+	TAX
+	TAY
+	CMP [$C8]
+	NOP
+	CPX #$CC
+	LDY #$AC
+	CMP $CACACC
+	TAX
+	TAY
+	CMP [$C8]
+	LDY #$A5
+	REP #$C5
+	SBC $C0
+	ASL $0D,X
+	AND $17,X
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND ($08)
+	PHP
+	ORA #$03
+	ORA $A215,X
+	LDX #$C3
+	CMP $A3
+	LDX #$A3
+	LDA $C7
+	CMP [$A7]
+	LDX $A7
+	TAY
+	DEX
+	DEX
+	TAX
+	LDA #$AA
+	LDA $C7C0EA
+	INY
+	TAY
+	LDA [$C5]
+	INY
+	CMP [$A7]
+	LDA $C3
+	CMP [$C5]
+	REP #$C2
+	CMP $E5
+	CPY #$A2
+	LDX #$C3
+	CMP $A3
+	LDX #$A3
+	LDA $C7
+	CMP [$A7]
+	LDX $A7
+	TAY
+	DEX
+	DEX
+	TAX
+	LDA #$AA
+	LDA $C7C0EA
+	CPY $C8CA
+	CMP [$C5]
+	CMP $C2
+	CMP $C5
+	LDA [$A8]
+	CMP [$C5]
+	SBC $AA
+	LDA $A5,S
+	LDA [$E8]
+	INX
+	TAY
+	LDA [$E8]
+	CMP #$CA
+	TAX
+	TAY
+	CMP [$C8]
+	NOP
+	CPX #$CC
+	LDY #$AC
+	CMP $CACACC
+	TAX
+	TAY
+	CMP [$C8]
+	LDY #$A5
+	REP #$C5
+	SBC $C0
+	ASL $0D,X
+	TYX
+	ORA [$1C],Y
+	ORA ($04,X)
+	BRK #$06
+	STX $07,Y
+	AND [$08],Y
+	PHP
+	ORA #$03
+	ORA $2015,X
+	ASL $0E,X
+	TSC
+	ORA [$1C],Y
+	ORA ($04,X)
+	BRK #$06
+	INY
+	ORA [$50]
+	PHP
+	ORA ($09),Y
+	COP #$20
+
+label_0487D4:
+	ASL $0E,X
+	LSR $1C17
+	ORA ($04,X)
+	BRK #$04
+
+label_0487DD:
+	BRK #$04
+	BRK #$0B
+	COP #$06
+	INY
+	ORA [$64]
+	PHP
+	TSB $09
+	COP #$1D
+	ORA $C0C0,Y
+	CPY #$D8
+	ASL $0E,X
+	EOR $171717,X
+	ORA [$00],Y
+	BRK #$00
+	BRK #$00
+	DEC $2000,X
+	ORA $300D
+	ORA $0D6D
+	STA $0DD10D,X
+	SEP #$0D
+	XCE
+	ORA $0DFC
+	SBC $0505,X
+	BRA label_048830
+	ORA ($04,X)
+	PHP
+	ASL $64
+	ORA [$3C]
+	PHP
+	ORA ($09)
+	ORA $1D
+	TRB $1A
+	BRK #$01
+	INC A
+	COP #$78
+	LDA #$B0
+	BCS label_0487D4
+	BCS label_0487DD
+	LDA [$AE]
+	LDX $AEA7
+
+label_048830:
+	LDX $ACA5
+	LDY $ACA5
+	LDY $A8AC
+	LDA $A8
+	LDA $A1
+	TAY
+	TAY
+	LDY #$AA
+	TAX
+	LDY #$AC
+	LDY $A0C0
+	ORA [$0D],Y
+	AND $17,X
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND ($08)
+	PHP
+	ORA #$03
+	ORA $A515,X
+	LDY $A5AC
+	LDY $A3AC
+	TAX
+	TAX
+	LDA $AA,S
+	TAX
+	LDA ($A8,X)
+	TAY
+	LDA ($A8,X)
+	TAY
+	TAY
+	LDA $A1
+	LDA $A1
+	TAX
+	LDA $A5
+	LDY #$A7
+	LDA [$A0]
+	LDA #$A9
+	ORA [$0D],Y
+	ADC $011C17
+	TSB $00
+	ASL $96
+	ORA [$37]
+	PHP
+	PHP
+	ORA #$03
+	ORA $B115,X
+	CLV
+	CLV
+	LDA ($B8),Y
+	CLV
+	LDA $AFB6B6
+	LDX $B6,Y
+	LDA $B4B4
+	LDA $B4B4
+	LDY $B1,X
+	LDA $ADB1
+	LDX $B1,Y
+	LDA ($A0),Y
+	LDA ($B3,S),Y
+	LDY #$B5
+	LDA $17,X
+	ORA $17A1
+	TRB $0401
+	BRK #$06
+	INY
+	ORA [$50]
+	PHP
+	ORA ($09),Y
+	COP #$20
+	ORA [$0D],Y
+	CMP ($17,S),Y
+	TRB $0401
+	BRK #$04
+	BRK #$04
+	BRK #$0B
+	COP #$06
+	INY
+	ORA [$64]
+	PHP
+	TSB $09
+	COP #$1D
+	ORA $1720,Y
+
+label_0488D8:
+	ORA $17E4
+	ORA [$17],Y
+	ORA [$00],Y
+	BRK #$00
+	BRK #$00
+	CLV
+	ORA ($20,X)
+	ORA $300D
+	ORA $0E86
+	CLC
+	ASL $0EAA
+	TYX
+	ASL $0ED5
+	DEC $0E,X
+	CMP [$05],Y
+	COP #$80
+	TRB $0401
+	PHP
+	ASL $64
+	ORA [$3C]
+	PHP
+	ORA #$09
+	ORA $1D
+	TRB $1A
+	BRK #$01
+	INC A
+	COP #$78
+	TAY
+	TAX
+	DEY
+	TAX
+	LDY $AF80
+
+label_048913:
+	LDA ($AF),Y
+	LDY $B3,X
+	STX $B4,Y
+	LDA ($80,S),Y
+	LDX $B4,Y
+	LDA ($AF),Y
+	LDA $B4AF91
+	BRA label_0488D8
+	LDA $E0EAAC
+	TAY
+	TAX
+	DEY
+	TAX
+	LDY $AF80
+	LDA ($AF),Y
+	LDY $B3,X
+	STX $B4,Y
+	LDA ($80,S),Y
+	LDX $B4,Y
+	LDA ($AF),Y
+	LDA $CAAC94
+	BRA label_048913
+	INX
+	LDY #$A3
+	LDA $A7
+	ASL $0D,X
+	AND $17,X
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND ($08)
+	PHP
+	ORA #$03
+	ORA $A815,X
+	LDY $ACA3
+	TAY
+	LDY $A8A3
+	LDA ($A8,X)
+	TAY
+	TAY
+	LDA ($A8,X)
+	TAY
+	TAY
+	TAY
+	LDY $ACA3
+	TAY
+	LDY $A9A8
+	LDA $AA,S
+	TAX
+	TAX
+	LDA $AA,S
+	TAX
+	TAX
+	TAY
+	LDY $ACA3
+	TAY
+	LDY $ACA3
+	LDA ($A8,X)
+	TAY
+	TAY
+	LDA ($A8,X)
+	TAY
+	TAY
+	TAY
+	TAY
+	LDA $A8,S
+	TAX
+	LDA [$A3]
+	LDA [$A8]
+	TAY
+	LDA $A8,S
+	TAY
+	TAY
+	LDA $A8,S
+	TAY
+	LDY $ACA3
+	TAY
+	LDY $A8A3
+	LDA ($A8,X)
+	TAY
+	TAY
+	LDA ($A8,X)
+	TAY
+	TAY
+	TAY
+	LDY $ACA3
+	TAY
+	LDY $A9A8
+	LDA $AA,S
+	TAX
+	TAX
+	LDA $AA,S
+	TAX
+	TAX
+	TAY
+	LDY $ACA3
+	TAY
+	LDY $ACA3
+	LDA ($A8,X)
+	TAY
+	TAY
+	LDA ($A8,X)
+	TAY
+	TAY
+	TAY
+	TAY
+	LDA $A8,S
+	TAX
+	LDA [$A3]
+	LDA [$A8]
+	TAY
+	LDA $A8,S
+	TAY
+	TAY
+	LDA $A8,S
+	ASL $0D,X
+	DEY
+	ORA [$1C],Y
+	ORA ($04,X)
+	BRK #$06
+	STX $07,Y
+	AND [$08],Y
+	PHP
+	ORA #$03
+	ORA $A015,X
+	LDA $A0,S
+	LDA $A0,S
+	LDA $A0,S
+	LDA $A0,S
+	LDA ($A0,X)
+	LDA ($A0,X)
+	LDA ($A0,X)
+	LDA ($A0,X)
+	LDA $A0,S
+	LDA $A0,S
+	LDA $A0,S
+	LDA $A0,S
+	LDA ($A0,X)
+	LDA ($A0,X)
+	LDA ($A0,X)
+	LDA ($A0,X)
+	LDA $A0,S
+	LDA $A0,S
+	LDA $A0,S
+	LDA $A0,S
+	LDA ($A0,X)
+	LDA ($A0,X)
+	LDA ($A0,X)
+	LDA ($A0,X)
+	LDY $ACA0
+	LDY #$AA
+	LDY #$AA
+	LDY #$AC
+	LDY #$AC
+	LDY #$AC
+	LDY #$AC
+	LDY #$A3
+	LDY #$A3
+	LDY #$A3
+	LDY #$A3
+	LDY #$A1
+	LDY #$A1
+	LDY #$A1
+	LDY #$A1
+	LDY #$A3
+	LDY #$A3
+	LDY #$A3
+	LDY #$A3
+	LDY #$A1
+	LDY #$A1
+	LDY #$A1
+	LDY #$A1
+	LDY #$A3
+	LDY #$A3
+	LDY #$A3
+	LDY #$A3
+	LDY #$A1
+	LDY #$A1
+	LDY #$A1
+	LDY #$A1
+	LDY #$AC
+	LDY #$AC
+	LDY #$AA
+	LDY #$AA
+	LDY #$AC
+	LDY #$AC
+	LDY #$AC
+	LDY #$AC
+	ASL $0E,X
+	INC A
+	ORA [$1C],Y
+	ORA ($04,X)
+	BRK #$06
+	INY
+	ORA [$50]
+	PHP
+	ORA ($09),Y
+	COP #$20
+	ASL $0E,X
+	LDY $1C17
+	ORA ($04,X)
+	BRK #$04
+	BRK #$04
+	BRK #$0B
+	COP #$06
+	INY
+	ORA [$64]
+	PHP
+	TSB $09
+	COP #$1D
+	ORA $B8A0,Y
+	ASL $0E,X
+	LDA $1717,X
+	ORA [$17],Y
+	BRK #$00
+	BRK #$00
+	BRK #$DC
+	ORA ($20,X)
+	ORA $300D
+	ORA $0E95
+	ORA ($0E,X)
+	CMP $0EE00E
+	SBC $FA0E,Y
+	ASL $05FB
+	TSB $00
+	TRB $0401
+	PHP
+	ASL $64
+	ORA [$3C]
+	PHP
+	ORA #$09
+	ORA $1D
+	TRB $1A
+	BRK #$01
+	INC A
+	COP #$78
+	INX
+	CMP $E1
+	CMP ($C1,X)
+	CMP $CA
+	INX
+	CPY #$ED
+	CPY $CCCA
+	CMP $C0E8
+	CMP $C6
+	INY
+	NOP
+	DEX
+	INX
+	DEC $C5
+	DEC $C8
+	SBC ($C0,X)
+	SBC $C5
+	NOP
+	DEX
+	CMP $C5
+	DEC $C8
+	DEC $C3
+	INX
+	CMP ($E5,X)
+	CMP ($C5,X)
+	DEC $CA
+	INX
+	CPY #$ED
+	CMP $CCCA
+	CMP $C0E8
+	CMP $C6
+	INY
+	NOP
+	DEX
+	SBC $E8CA
+	CMP $E3
+	CMP ($E5,X)
+	CMP $C8
+	DEC $C3
+	SBC ($C0,X)
+	CPX #$C0
+	ASL $0D,X
+	AND $17,X
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND ($08)
+	PHP
+	ORA #$03
+	ORA $A015,X
+	INX
+	CMP $E1
+	LDY $C1A0
+	CMP $CA
+	INX
+	LDY #$A0
+	SBC $CACC
+	CPY $A0AD
+	INX
+	CPY #$C5
+	DEC $A8
+	LDY #$EA
+	DEX
+	INX
+	LDX $A0
+	CMP $C6
+	INY
+	SBC ($A0,X)
+	LDY #$E5
+	CMP $EA
+	TAX
+	LDY #$C3
+	CMP $C6
+	INY
+	DEC $A3
+	LDY #$E8
+	CMP ($E5,X)
+	LDA ($A0,X)
+	CMP $C6
+	DEX
+	INX
+	LDY #$A0
+	SBC $CACD
+	CPY $A0AD
+	INX
+	CPY #$C5
+	DEC $A8
+	LDY #$EA
+	DEX
+	SBC $A0AA
+	INX
+	CMP $E3
+	LDA ($A0,X)
+	SBC $C5
+	INY
+	DEC $A3
+	LDY #$E1
+	CPY #$E0
+	LDY #$16
+	ORA $1797
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND [$08],Y
+	PHP
+	ORA #$03
+	ORA $A115,X
+	TAY
+	LDA $A8
+	LDA $A8
+	LDA ($A8,X)
+	LDA $A8
+	LDA $A8
+	LDA ($A8,X)
+	LDA $A8
+	LDA $A8
+	LDA ($A8,X)
+	LDA $A8
+	LDA $A8
+	LDA ($AA,X)
+	LDX $AA
+	LDX $AA
+	LDA ($AA,X)
+	LDX $AA
+	LDX $AA
+	LDY $A3A8
+	TAY
+	LDA $A8,S
+	LDY $A3A8
+	TAY
+	LDA $A8,S
+	LDA ($AA,X)
+	LDX $AA
+	LDX $AA
+	LDA ($AA,X)
+	LDX $AA
+	LDX $AA
+	LDA ($A8,X)
+	LDA $A8
+	LDA $A8
+	LDA ($A8,X)
+	LDA $A8
+	LDA $A8
+	LDA ($A8,X)
+	LDA $A8
+	LDA $A8
+	LDA ($AA,X)
+	LDX $AA
+	LDX $AA
+	LDY $A3A8
+	TAY
+	LDA $A8,S
+	LDY $A3A8
+	TAY
+	LDA $A8,S
+	LDA ($A8,X)
+	LDA $A8
+	LDA $A8
+	LDA ($A8,X)
+	LDA $A8
+	LDA $A8
+	LDA ($A8,X)
+	LDA $A8
+	LDA $A8
+	LDA ($A8,X)
+	LDA $A8
+	LDA $A8
+	LDA ($AA,X)
+	LDX $AA
+	LDX $AA
+	LDA ($AA,X)
+	LDX $AA
+	LDX $AA
+	LDY $A3A8
+	TAY
+	LDA $A8,S
+	LDY $A3A8
+	TAY
+	LDA $A8,S
+	LDA ($AA,X)
+	LDX $AA
+	LDX $AA
+	LDA ($AA,X)
+	LDX $AA
+	LDX $AA
+	LDA ($A8,X)
+	LDA $A8
+	LDA $A8
+	LDA ($A8,X)
+	LDA $A8
+	LDA $A8
+	LDA ($A8,X)
+	LDA $A8
+	LDA $A8
+	LDY $A3A8
+	TAY
+	LDA $A8,S
+	LDA ($A8,X)
+	LDA $A8
+	LDA $A8
+	SBC ($C0,X)
+	ASL $0E,X
+	ORA $17
+	TRB $0401
+	BRK #$06
+	INY
+	ORA [$50]
+	PHP
+	ORA ($09),Y
+	COP #$20
+	ASL $0E,X
+	CMP ($17),Y
+	TRB $0401
+	BRK #$04
+	BRK #$04
+	BRK #$0B
+	COP #$06
+	INY
+	ORA [$64]
+	PHP
+	TSB $09
+	COP #$1D
+	ORA $1620,Y
+	ASL $17E2
+	ORA [$17],Y
+	ORA [$00],Y
+	BRK #$00
+	BRK #$00
+	CMP ($00,X)
+	JSR $0D0D
+	BMI label_048C9D
+	ADC $A10D
+	ORA $0DB4
+	CMP $0D
+	DEC $DF0D,X
+	ORA $05E0
+
+label_048C9D:
+	ORA $80
+	TRB $0401
+	PHP
+	ASL $64
+	ORA [$3C]
+	PHP
+	ASL A
+	ORA #$03
+	ORA $1A14,X
+	BRK #$01
+	INC A
+	COP #$78
+	CMP $A1
+	CMP $A6
+	CMP $A1
+	CMP $AA
+	INY
+	LDA ($C3,X)
+	LDX $C5
+	LDA ($C5,X)
+	TAY
+	CMP $C9AB
+	TAY
+	DEC $A4
+	CMP $A1
+	WAI
+	LDA $A9CB
+	TAY
+	LDX $A4
+	LDA #$A6
+	LDY $17
+	ORA $1735
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND ($08)
+	PHP
+	ORA #$03
+	ORA $C515,X
+	LDA ($C3,X)
+	LDX $C5
+	LDA ($C3,X)
+	TAX
+	INY
+	LDA ($C3,X)
+	LDX $C5
+	LDA ($C5,X)
+	TAY
+	CMP $C9AB
+	TAY
+	DEC $A4
+	CMP $A1
+	WAI
+	LDA $A9CB
+	TAY
+	LDX $A4
+	LDA #$A6
+	LDY $17
+	ORA $176F
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND [$08],Y
+	PHP
+	ORA #$03
+	ORA $2015,X
+	ORA [$0D],Y
+	LDA $17,S
+	TRB $0401
+	BRK #$06
+	INY
+	ORA [$50]
+	PHP
+	ORA ($09),Y
+	COP #$20
+	ORA [$0D],Y
+	LDX $17,Y
+	TRB $0401
+	BRK #$04
+	BRK #$04
+	BRK #$0B
+	COP #$06
+	INY
+	ORA [$64]
+	PHP
+	TSB $09
+	COP #$1D
+	ORA $1620,Y
+	ORA $17C7
+	ORA [$17],Y
+	ORA [$00],Y
+	BRK #$00
+	BRK #$00
+	CMP $2001,Y
+	ORA $300D
+	ORA $0EBA
+	AND $0E,X
+	BVC label_048D6E
+	PHX
+	ASL $0EF6
+	SBC [$0E],Y
+	SED
+	ORA $05
+	CPY #$1C
+	ORA ($04,X)
+	PHP
+
+label_048D6E:
+	ASL $64
+	ORA [$3C]
+	PHP
+	ORA #$09
+	ORA $1D
+	TRB $1A
+	BRK #$01
+	INC A
+	COP #$78
+	PEI ($B4)
+	LDY $D2,X
+	CMP ($CF)
+	CMP $AFADEB
+	LDA $C8AB
+	WAI
+	INX
+	CPX #$C0
+	LDY #$A0
+	CPY #$A0
+	LDY #$C0
+	LDY #$A0
+	CPY #$A0
+	LDY #$C3
+	LDA $A1,S
+	CMP $C6
+	SBC $E0
+	LDA ($A3,X)
+	LDA ($A0,X)
+	CPY #$C0
+	CMP $A0
+	LDA ($E3,X)
+	CPY #$AB
+	TAY
+	LDX $A3
+	LDY #$A6
+	LDY #$A8
+	LDY #$A3
+	LDA ($A3,X)
+	CPX #$AB
+	TAY
+	DEC $A3
+	LDX $E8
+	CPX #$CD
+	LDY #$AF
+	LDA $ADAF
+	PLB
+	TAY
+	PLB
+	TAY
+	LDX $C4
+	INY
+	DEC $A1
+	LDA $A6,S
+	LDA $C6,S
+	CMP $EFADA0
+	LDA $ADAF
+	PLB
+	TAY
+	PLB
+	TAY
+	LDX $A4
+	TAY
+	LDX $A3
+	CPY $C8
+	DEC $A1
+	LDA $A6,S
+	LDA $C6,S
+	INX
+	CPX #$16
+	ORA $1735
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND ($08)
+	PHP
+	ORA #$03
+	ORA $D415,X
+	LDY $B4,X
+	CMP ($D2)
+	CMP $ADEBCF
+	LDA $C8ABAD
+	WAI
+	INX
+	CPX #$C3
+	LDA $A3,S
+	CMP $A3
+	LDA $C3,S
+	LDA $A3,S
+	CMP $A3
+	LDA $C3,S
+	LDA $A1,S
+	CMP $C6
+	CMP $C3
+	WAI
+	WAI
+	LDA ($A3,X)
+	LDA ($AB,X)
+	INY
+	WAI
+	CMP $A0
+	LDA ($E3,X)
+	CPY #$AB
+	TAY
+	LDX $A3
+	LDY #$A6
+	LDY #$A8
+	LDY #$A3
+	LDA ($A3,X)
+	XBA
+	PLB
+	TAY
+	DEC $A3
+	LDX $E8
+	CPX #$CD
+	LDY #$AF
+	LDA $ADAF
+	PLB
+	TAY
+	PLB
+	TAY
+	LDX $C4
+	INY
+	DEC $A1
+	LDA $A6,S
+	LDA $C6,S
+	CMP $EFADA0
+	LDA $ADAF
+	PLB
+	TAY
+	PLB
+	TAY
+	LDX $A4
+	TAY
+	LDX $A3
+	CPY $C8
+	DEC $A1
+	LDA $A6,S
+	LDA $C6,S
+	INX
+	CPX #$16
+	ORA $17BC
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND [$08],Y
+	PHP
+	ORA #$03
+	ORA $2015,X
+	ASL $0E,X
+	AND $011C17,X
+	TSB $00
+	ASL $C8
+	ORA [$50]
+	PHP
+	ORA ($09),Y
+	COP #$C0
+	LDY #$A0
+	CPY #$C0
+	CPY #$C0
+	CPX #$A0
+	LDY #$A0
+	LDY #$C0
+	CPY #$E0
+	CPX #$C3
+	LDA $A3,S
+	CMP $A3
+	LDA $C3,S
+	LDA $A3,S
+	CMP $A3
+	LDA $C3,S
+	LDA $A1,S
+	CMP $C6
+	CMP $C3
+	WAI
+	WAI
+	LDA ($A3,X)
+	LDA ($AB,X)
+	INY
+	WAI
+	LDA $A3,S
+	LDA $A1,S
+	CMP $C3
+	CMP $AB
+	TAY
+	LDX $A3
+	LDY #$A6
+	LDY #$A8
+	LDY #$A3
+	LDA ($A3,X)
+	WAI
+	WAI
+	PLB
+	TAY
+	DEC $A3
+	LDX $C8
+	INY
+	INY
+	INY
+	LDA $A0AD
+	LDA $ADAFAD
+	PLB
+	TAY
+	PLB
+	TAY
+	LDX $C4
+	INY
+	DEC $A1
+	LDA $A6,S
+	LDA $C6,S
+	CMP $CFADA0
+	CMP $ADAFAD
+	PLB
+	TAY
+	PLB
+	TAY
+	LDX $A4
+	TAY
+	LDX $A3
+	CPY $C8
+	DEC $A1
+	LDA $A6,S
+	LDA $C6,S
+	INY
+	INY
+	INY
+	INY
+	ASL $0E,X
+	EOR ($17)
+	TRB $0401
+	BRK #$04
+	BRK #$04
+	BRK #$0B
+	COP #$06
+	INY
+	ORA [$64]
+	PHP
+	TSB $09
+	COP #$1D
+	ORA $C0C0,Y
+	CLD
+	CPY #$16
+	ASL $17DC
+	ORA [$17],Y
+	ORA [$00],Y
+	BRK #$00
+	BRK #$00
+	LDY $01,X
+	JSR $0D0D
+	BMI label_048F49
+	CPY $0E
+	DEC A
+	ASL $0EA7
+	CLV
+	ASL $0ED1
+	CMP ($0E)
+	CMP ($05,S),Y
+
+label_048F49:
+	ORA $00
+	TRB $0401
+	PHP
+	ASL $64
+	ORA [$3C]
+	PHP
+	ORA #$09
+	ORA $1D
+	TRB $1A
+	BRK #$01
+	INC A
+	COP #$78
+	CMP $A0
+	INY
+	TAX
+	NOP
+	CPY #$C6
+	LDY #$CA
+	LDY $C0EC
+	CMP $A5CDA0
+	INY
+	LDY #$C6
+	LDA $C5
+	LDY #$C3
+	LDY #$C1
+	LDY #$A0
+	DEY
+	STA $8D88
+	DEY
+	STA $8D88
+	DEY
+	STA $8D88
+	DEY
+	STA $8D88
+	DEY
+	STY $808C
+	STY $8880
+	STY $808C
+	STY $8880
+	STA $888F88
+	STA $888F88
+	STA $888F88
+
+label_048FA3:
+	STA $808D
+
+label_048FA5:
+	STA $8880
+	STA $808D
+	STA $8880
+	STA $8D88
+	DEY
+	STA $8D88
+	DEY
+	STA $8D88
+	STX $8D
+	STX $8D
+	STX $8D
+	STX $8D
+	STX $8D
+	STX $8D
+	STA $8D
+	STA $8D
+	STA $8D
+	STA $8C,S
+	STA $8C,S
+	TXA
+	STY $A0AD
+	DEY
+	BRA label_048FA5
+	LDY #$16
+	ORA $1735
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND ($08)
+	PHP
+	ORA #$03
+	ORA $A015,X
+	TAY
+	TAY
+	LDY #$A8
+	TAY
+	LDY #$AA
+	TAX
+	LDY #$AA
+	TAX
+	LDY #$AA
+	TAX
+	LDY #$AA
+	TAX
+	LDY #$AC
+	LDY $ACA0
+	LDY $AAA0
+	TAX
+	LDY #$AA
+	TAX
+	LDY #$A8
+	TAY
+	LDY #$A8
+	TAY
+	LDY #$A8
+	TAY
+	LDY #$A8
+	TAY
+	LDA ($A8,X)
+	LDA $A1
+	BRA label_048FA3
+	TXA
+	STY $A8A0
+	TAY
+	LDY #$A8
+	TAY
+	LDY #$A8
+	TAY
+	LDY #$A8
+	TAY
+	LDY #$A8
+	TAY
+	LDY #$A8
+	TAY
+	LDY #$A8
+	TAY
+	LDY #$A8
+	TAY
+	LDY #$A8
+	TAY
+	LDY #$A8
+	TAY
+	LDY #$AA
+	TAX
+	LDY #$AA
+	TAX
+	LDY #$A8
+	TAY
+	LDY #$A8
+	TAY
+	LDY #$A8
+	TAY
+	LDY #$80
+	DEY
+	TXA
+	STY $0D16
+	DEC $17
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND [$08],Y
+	PHP
+	ORA #$03
+	ORA $A115,X
+	LDA $A5
+	LDA ($A5,X)
+	LDA $A1
+	LDX $A6
+	LDA ($A6,X)
+	LDX $A3
+	LDX $A6
+	LDA $A6,S
+	LDX $A3
+	TAY
+	TAY
+	LDA $A8,S
+	TAY
+	LDA $A6,S
+	LDX $A3
+	LDX $A6
+	LDY $A3A3
+	TAY
+	LDA $A3,S
+	LDY $A3A3
+	TAY
+	LDA $A3,S
+	CPX #$C0
+	LDA ($A5,X)
+	LDA $A1
+	LDA $A5
+	LDY $A3A3
+	LDY $A3A3
+	LDY $A3A3
+	LDY $A3A3
+	LDA ($A5,X)
+	LDA $A1
+	LDA $A5
+	LDA ($A5,X)
+	LDA $A1
+	LDA $A5
+	LDA ($A6,X)
+	LDX $A1
+	LDX $A6
+	LDA ($A5,X)
+	LDA $AC
+	LDA $A3,S
+	LDA ($A5,X)
+	LDA $A1
+	CPY #$16
+	ASL $173C
+	TRB $0401
+	BRK #$06
+	INY
+	ORA [$50]
+	PHP
+	ORA ($09),Y
+	COP #$20
+	ASL $0E,X
+	LDA #$17
+	TRB $0401
+	BRK #$04
+	BRK #$04
+	BRK #$0B
+	COP #$06
+	INY
+	ORA [$64]
+	PHP
+	TSB $09
+	COP #$1D
+	ORA $1620,Y
+	ASL $17BA
+	ORA [$17],Y
+	ORA [$00],Y
+	BRK #$00
+	BRK #$00
+	CPY $2000
+	ORA $300D
+	ORA $0D63
+	STY $0D
+	LDX $BF0D
+	ORA $0DE9
+	NOP
+	ORA $05EB
+	TSB $80
+	TRB $0401
+	PHP
+	ASL $64
+	ORA [$3C]
+	PHP
+	ASL $0309
+	ORA $1A14,X
+	BRK #$01
+	INC A
+	COP #$78
+	CMP $8DAD
+	STA $ACCD
+	TAX
+	INY
+	CMP $C8
+	CMP $A3
+	LDA $A6
+	TAY
+	TAX
+	TAY
+	TAX
+	LDY $ADCD
+	STA $CD8D
+	ORA [$0D],Y
+	AND $17,X
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND ($08)
+	PHP
+	ORA #$03
+	ORA $C115,X
+	INY
+	CMP ($C8,X)
+	CMP $C8
+	CMP $C8
+	CMP $CA
+	CMP $CA
+	CMP ($C1,X)
+	SBC ($17,X)
+	ORA $1765
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND [$08],Y
+	PHP
+	ORA #$03
+	ORA $CD15,X
+	LDA $8D8D
+	CMP $AAAC
+	INY
+	CMP $C8
+	CMP $A3
+	LDA $A6
+	TAY
+	TAX
+	TAY
+	TAX
+	LDY $ADCD
+	STA $CD8D
+	ORA [$0D],Y
+	STX $17
+	TRB $0401
+	BRK #$06
+	INY
+	ORA [$50]
+	PHP
+	ORA ($09),Y
+	COP #$20
+	ASL $0D,X
+	BCS label_0491AC
+	TRB $0401
+	BRK #$04
+	BRK #$04
+	BRK #$0B
+	COP #$06
+	INY
+	ORA [$64]
+	PHP
+	TSB $09
+	COP #$1D
+	ORA $D8C0,Y
+	CPY #$D8
+
+label_0491AC:
+	CPY #$D8
+	CPY #$D8
+	CPY #$D8
+	CPY #$D8
+	LDY #$B8
+	CLV
+	TYA
+	TYA
+	CLD
+	ORA [$0D],Y
+	CMP ($17,X)
+	ORA [$17],Y
+	ORA [$00],Y
+	BRK #$00
+	BRK #$00
+	LDA $00
+	JSR $0D0D
+	BMI label_0491DB
+	RTS
+	ORA $0D79
+	STA ($0D)
+	LDA #$0D
+	REP #$0D
+	CMP $0D
+	CPY $05
+
+label_0491DB:
+	ORA [$00]
+	TRB $0401
+	PHP
+	ASL $64
+	ORA [$3C]
+	PHP
+	ASL A
+	ORA #$03
+	ORA $1A14,X
+	BRK #$01
+	INC A
+	COP #$78
+	CMP $CDACAC
+	TAX
+	TAX
+	CPY $A8A8
+	DEX
+	LDX $A6
+	LDY $ACAA
+	LDA $ADAF
+	LDY $E8AA
+	ORA [$0D],Y
+	AND $17,X
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND ($08)
+	PHP
+	ORA #$03
+	ORA $E315,X
+	SBC ($EC,X)
+	NOP
+	CPX $E8E3
+	ORA [$0D],Y
+	PER $1C17
+	ORA ($04,X)
+	BRK #$06
+	STX $07,Y
+	AND [$08],Y
+	PHP
+	ORA #$03
+	ORA $EF15,X
+	SBC $F6F8
+	SED
+	SBC $0D17F4
+	TDC
+	ORA [$1C],Y
+	ORA ($04,X)
+	BRK #$06
+	INY
+	ORA [$50]
+	PHP
+	ORA ($09),Y
+	COP #$EF
+	SBC $F6F8
+	SED
+	SBC $0D17F4
+	STY $17,X
+	TRB $0401
+	BRK #$04
+	BRK #$04
+	BRK #$0B
+	COP #$06
+	INY
+	ORA [$64]
+	PHP
+	TSB $09
+	COP #$1D
+	ORA $1720,Y
+	ORA $17AB
+	ORA [$17],Y
+	ORA [$00],Y
+	BRK #$00
+	BRK #$00
+	LDA $0D2000,X
+	ORA $0D30
+	JML $0D7F0D
+	LDX #$0D
+	CMP $0D
+	JMP [$DD0D]
+	ORA $05DE
+	ORA $00
+	TRB $0401
+	PHP
+	ASL $64
+	ORA [$3C]
+	PHP
+	ASL $09
+	ORA $1D
+	TRB $1A
+	BRK #$01
+	INC A
+	COP #$78
+	TAY
+	LDA $C6
+	LDA ($A0,X)
+	TAX
+	LDX $C8
+	LDA $A0,S
+	TAY
+	TAX
+	LDY $C3A1
+	CMP $E1
+	ORA [$0D],Y
+	AND $17,X
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND ($08)
+	PHP
+	ORA #$03
+	ORA $B115,X
+	LDA $A0B1CD
+	LDA ($B1)
+	CMP $B1A0B2
+	LDA $D1AFAD
+	CMP $0D17ED
+	LSR $1C17,X
+	ORA ($04,X)
+	BRK #$06
+	STX $07,Y
+	AND [$08],Y
+	PHP
+	ORA #$03
+	ORA $B115,X
+	LDA $A0B1CD
+	LDA ($B1)
+	CMP $B1A0B2
+	LDA $D1AFAD
+	CMP $0D17ED
+	STA ($17,X)
+	TRB $0401
+	BRK #$06
+	INY
+	ORA [$50]
+	PHP
+	ORA ($09),Y
+	COP #$B1
+	LDA $A0B1CD
+	LDA ($B1)
+	CMP $B1A0B2
+	LDA $D1AFAD
+	CMP $0D17ED
+	LDY $17
+	TRB $0401
+	BRK #$04
+	BRK #$04
+	BRK #$0B
+	COP #$06
+	INY
+	ORA [$64]
+	PHP
+
+label_04932B:
+	TSB $09
+	COP #$1D
+	ORA $1720,Y
+	ORA $17C5
+	ORA [$17],Y
+	ORA [$00],Y
+	BRK #$00
+	BRK #$00
+	JSR $2001
+	ORA $300D
+	ORA $0D7D
+	CMP $0E
+	ORA ($0E,S),Y
+	BIT $0E
+	AND $0E,X
+	ROL $0E,X
+	AND $000405,X
+	TRB $0401
+	PHP
+	ASL $64
+	ORA [$3C]
+	PHP
+	ORA ($09)
+	ORA $1D
+	TRB $1A
+	BRK #$01
+	INC A
+	COP #$78
+	LDY $B6,X
+	LDY $D1,X
+	LDY #$B4
+	LDX $B4,Y
+	CMP ($A0),Y
+	LDA $D2AFAE
+	LDY #$B1
+	BCS label_04932B
+	PEI ($A0)
+	LDX $B5,Y
+	LDX $AD,Y
+	CLV
+	LDX $B4,Y
+	LDX $B4,Y
+	CMP ($A0),Y
+	LDX $B5,Y
+	LDX $AD,Y
+	CLV
+	LDX $B4,Y
+	LDX $B4,Y
+	CMP ($A0),Y
+	LDA $B2AFAE
+	LDA ($AF),Y
+	SBC $16C0
+	ORA $1735
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND ($08)
+	PHP
+	ORA #$03
+	ORA $A115,X
+	TAY
+	TAY
+	LDA ($A8,X)
+	TAY
+	LDA ($A8,X)
+	TAY
+	LDA ($A8,X)
+	TAY
+	TAY
+	LDA $A3,S
+	TAY
+	LDA $A3,S
+	LDA ($A8,X)
+	TAY
+	LDA ($A8,X)
+	TAY
+	LDA ($B1)
+	LDA ($B6)
+	LDY $B2,X
+	LDA ($B2),Y
+	LDA ($CD),Y
+	LDY #$B2
+	LDA ($B2),Y
+	LDX $B4,Y
+	LDA ($B1)
+	LDA ($B1)
+	CMP $ACA0
+	PLB
+	LDY $ADAF
+	LDY $C0F1
+	ASL $0D,X
+	ADC $011C17,X
+	TSB $00
+	ASL $96
+	ORA [$37]
+	PHP
+	PHP
+	ORA #$03
+	ORA $A015,X
+	LDA $A5
+	LDY #$A5
+	LDA $A0
+	LDA $A5
+	LDY #$A5
+	LDA $A0
+	LDY $A0AC
+	LDY $A0AC
+	LDA $A5
+	LDY #$A5
+	LDA $A6
+	LDA ($A1,X)
+	LDA ($A1,X)
+	LDA ($A1,X)
+	TAY
+	TAY
+	TAY
+	TAY
+	TAY
+	LDX $A1
+	LDA ($A1,X)
+	LDA ($A1,X)
+	LDA ($A8,X)
+	TAY
+	TAY
+	TAY
+	TAY
+	LDA $A8,S
+	TAY
+	TAY
+	TAY
+	TAY
+	LDA ($A8,X)
+	TAY
+	TAY
+	TAX
+	LDY $0D16
+	CMP [$17]
+	TRB $0401
+	BRK #$06
+	INY
+	ORA [$50]
+	PHP
+	ORA ($09),Y
+	COP #$20
+
+label_049441:
+	ASL $0E,X
+	ORA $17,X
+	TRB $0401
+	BRK #$04
+	BRK #$04
+	BRK #$0B
+	COP #$06
+	INY
+	ORA [$64]
+	PHP
+	TSB $09
+	COP #$1D
+	ORA $1620,Y
+	ASL $1726
+	ORA [$17],Y
+	ORA [$00],Y
+	BRK #$00
+	BRK #$00
+	STX $00,Y
+	JSR $0D0D
+	BMI label_04947A
+	CLI
+	ORA $0D6A
+	BIT #$0D
+	TXS
+	ORA $0DB3
+	LDY $0D,X
+	LDA $05,X
+
+label_04947A:
+	ORA $A0
+	TRB $0401
+	PHP
+	ASL $64
+	ORA [$3C]
+	PHP
+	ORA #$09
+	ORA $1D
+	TRB $1A
+	BRK #$01
+	INC A
+	COP #$78
+	CMP ($B1),Y
+	BEQ label_049441
+	LDX $B0D0
+	LDA ($B0),Y
+	LDX $B0AC
+	INC $0D17
+	AND $17,X
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND ($08)
+	PHP
+	ORA #$03
+	ORA $1715,X
+	ORA $175A
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND [$08],Y
+	PHP
+	ORA #$03
+	ORA $C515,X
+	LDA $E4
+	LDY $C4A2
+	LDY $A5
+	LDY $A2
+	LDY $E2A4
+	ORA [$0D],Y
+	JMP ($1C17)
+	ORA ($04,X)
+	BRK #$06
+	INY
+	ORA [$50]
+	PHP
+	ORA ($09),Y
+	COP #$20
+	ORA [$0D],Y
+	PHB
+	ORA [$1C],Y
+	ORA ($04,X)
+	BRK #$04
+	BRK #$04
+	BRK #$0B
+	COP #$06
+	INY
+	ORA [$64]
+	PHP
+	TSB $09
+	COP #$1D
+	ORA $1720,Y
+	ORA $179C
+
+label_0494FD:
+	ORA [$17],Y
+	ORA [$00],Y
+	BRK #$00
+	BRK #$00
+	BRK #$E8
+	BRK #$20
+	ORA $300D
+	ORA $0D4C
+	STA ($0D)
+	LDA $0D
+	SBC #$0E
+	ORA $0E
+	ASL $0E
+	ORA [$05]
+
+label_04951A:
+	ORA [$00]
+	TRB $0401
+	PHP
+	ASL $64
+	ORA [$3C]
+	PHP
+	ORA #$09
+	ORA $1D
+	TRB $1A
+	BRK #$01
+	INC A
+	COP #$78
+	JSR $0D16
+
+label_049534:
+	AND $17,X
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND ($08)
+
+label_04953E:
+	PHP
+	ORA #$03
+	ORA $CD15,X
+
+label_049544:
+	LDA $CDAB
+	LDA $CDAB
+	LDA $ADAB
+	BCS label_0494FD
+	PLB
+	CMP $ABAD
+
+label_049554:
+	CMP $ABAD
+	CMP $ABAD
+	LDA $ADB0
+	PLB
+	CMP ($B2)
+	BCS label_049534
+	LDA ($B0)
+	CMP ($B2)
+	BCS label_04951A
+	LDA $B2,X
+	BCS label_04953E
+	LDA ($B0)
+	CMP ($B2)
+	BCS label_049544
+
+label_049571:
+	LDA ($B0)
+	LDA ($B5)
+	LDA ($B0)
+	ASL $0D,X
+	LSR $1C17
+	ORA ($04,X)
+	BRK #$06
+	STX $07,Y
+	AND [$08],Y
+	PHP
+	ORA #$03
+	ORA $2015,X
+
+label_04958B:
+	ASL $0D,X
+	STY $17,X
+	TRB $0401
+	BRK #$06
+	INY
+
+label_049595:
+	ORA [$50]
+	PHP
+	ORA ($09),Y
+	COP #$CD
+
+label_04959B:
+	LDA $CDAB
+	LDA $CDAB
+	LDA $ADAB
+	BCS label_049554
+	PLB
+	CMP $ABAD
+	CMP $ABAD
+	CMP $ABAD
+	LDA $ADB0
+	PLB
+	CMP ($B2)
+	BCS label_04958B
+	LDA ($B0)
+	CMP ($B2)
+	BCS label_049571
+	LDA $B2,X
+	BCS label_049595
+	LDA ($B0)
+	CMP ($B2)
+	BCS label_04959B
+	LDA ($B0)
+	LDA ($B5)
+	LDA ($B0)
+	ASL $0D,X
+	LDA [$17]
+	TRB $0401
+	BRK #$04
+	BRK #$04
+	BRK #$0B
+	COP #$06
+	INY
+	ORA [$64]
+	PHP
+	TSB $09
+	COP #$1D
+	ORA $D8D8,Y
+	CPY $16D8
+	ORA $17EB
+	ORA [$17],Y
+	ORA [$00],Y
+	BRK #$00
+	BRK #$00
+	CMP $0D2000,X
+	ORA $0D30
+	JMP (label_049F0D)
+	ORA $0DD2
+	SBC $0D
+	JSR ($FD0D,X)
+	ORA $05FE
+
+label_04960B:
+	ASL $00
+	TRB $0401
+	PHP
+	ASL $64
+	ORA [$3C]
+	PHP
+	ORA [$09]
+	ORA $1D
+	TRB $1A
+	BRK #$01
+	INC A
+	COP #$78
+	LDY $B2,X
+	LDA $A8ABAD
+	WAI
+	LDY #$C8
+	LDY #$B4
+	LDA ($AF)
+	LDA $A8AB
+	WAI
+	LDY #$C8
+	LDY #$B4
+	LDA ($AF)
+	LDA $A8AB
+	WAI
+	LDY #$C8
+
+label_04963E:
+	LDY #$A6
+	BRA label_04960B
+	ORA [$0D],Y
+	AND $17,X
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND ($08)
+	PHP
+	ORA #$03
+	ORA $B415,X
+	LDA ($AF)
+	LDA $A8AB
+	WAI
+	LDY #$C8
+	LDY #$B4
+	LDA ($AF)
+	LDA $A8AB
+	WAI
+	LDY #$C8
+	LDY #$B4
+	LDA ($AF)
+
+label_04966C:
+	LDA $A8AB
+	WAI
+	LDY #$C8
+	LDY #$A6
+	BRA label_04963E
+	ORA [$0D],Y
+	ROR $1C17
+	ORA ($04,X)
+	BRK #$06
+	STX $07,Y
+	AND [$08],Y
+	PHP
+	ORA #$03
+	ORA $A815,X
+	TAY
+	TAY
+	TAY
+	TAY
+	TAY
+	INY
+	LDY #$C8
+	LDY #$A8
+	TAY
+	TAY
+	TAY
+	TAY
+	TAY
+	INY
+	LDY #$C8
+	LDY #$A8
+	TAY
+	TAY
+	TAY
+	TAY
+	TAY
+	INY
+	LDY #$C8
+	LDY #$A3
+	BRA label_04966C
+	ORA [$0D],Y
+	LDA ($17,X)
+	TRB $0401
+	BRK #$06
+	INY
+	ORA [$50]
+	PHP
+	ORA ($09),Y
+	COP #$20
+	ASL $0D,X
+	PEI ($17)
+	TRB $0401
+	BRK #$04
+	BRK #$04
+	BRK #$0B
+	COP #$06
+	INY
+	ORA [$64]
+	PHP
+	TSB $09
+	COP #$1D
+	ORA $1620,Y
+	ORA $17E5
+	ORA [$17],Y
+	ORA [$00],Y
+	BRK #$00
+	BRK #$00
+	CPX $2001
+	ORA $300D
+	ORA $0D7B
+	LDA $570E,X
+	ASL $0FEF
+	ORA #$0F
+	ASL A
+	ORA $05050B
+	BRA label_049713
+	ORA ($04,X)
+	PHP
+	ASL $64
+	ORA [$3C]
+	PHP
+	ORA ($09)
+	ORA $1D
+	TRB $1A
+	BRK #$01
+	INC A
+	COP #$78
+	INC $E0
+	INC $E0
+	INC $E0
+	INC $E0
+	SBC $E0
+
+label_049713:
+	SBC $E0
+	SBC $E0
+	SBC $E0
+	INC $E0
+	INC $E0
+	INC $E0
+	INC $E0
+	SBC $E0
+	SBC $E0
+	SBC $E0
+	SBC $E0
+	XBA
+	CPX #$EB
+	CPX #$ED
+	CPX #$ED
+	CPX #$EB
+	CPX #$EB
+	CPX #$ED
+	CPX #$ED
+	CPX #$16
+	ORA $1735
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND ($08)
+	PHP
+	ORA #$03
+	ORA $E315,X
+	SBC $E3
+	SBC $E3
+	SBC $E3
+	SBC $E1
+	SBC ($E1,X)
+	SBC ($E1,X)
+	SBC ($E1,X)
+	SBC ($E3,X)
+	SBC $E3
+	SBC $E3
+	SBC $E3
+	SBC $E1
+	SBC ($E1,X)
+	SBC ($E1,X)
+	SBC ($E1,X)
+	SBC ($E6,X)
+	INC $E6
+	INC $F1
+	SBC ($F1),Y
+	SBC ($E6),Y
+	INC $E6
+	INC $F1
+	SBC ($F1),Y
+	SBC ($16),Y
+	ORA $177D
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND [$08],Y
+	PHP
+	ORA #$03
+	ORA $A315,X
+	CMP $C1
+	CMP ($A1,X)
+	LDA $E3,S
+	CPY #$A0
+	LDA $C3,S
+	CMP ($C1,X)
+	LDA ($A3,X)
+	SBC $C0
+	LDY #$A1
+	CMP ($C1,X)
+	CMP ($A1,X)
+	LDA ($E1,X)
+	CPY #$A0
+	LDA ($C1,X)
+	CMP ($C1,X)
+	LDA ($A1,X)
+	SBC ($C0,X)
+	LDY #$A3
+	CMP $C1
+	CMP ($A1,X)
+	LDA $E3,S
+	CPY #$A0
+	LDA $C3,S
+	CMP ($C1,X)
+	LDA ($A3,X)
+	SBC $C0
+	LDY #$A1
+	CMP ($C1,X)
+	CMP ($A1,X)
+	LDA ($E1,X)
+	CPY #$A0
+	LDA ($C1,X)
+	CMP ($C1,X)
+	LDA ($A1,X)
+	SBC ($C0,X)
+	LDY #$AA
+	PLB
+	PLB
+	PLB
+	TAX
+	PLB
+	PLB
+	PLB
+	TAX
+	PLB
+	PLB
+	PLB
+	TAX
+	PLB
+	PLB
+	PLB
+	PLB
+	LDA $ADAD
+	PLB
+	LDA $ADAD
+	PLB
+	LDA $ADAD
+	PLB
+	LDA $ADAD
+	TAX
+	PLB
+	PLB
+	PLB
+	TAX
+	PLB
+	PLB
+	PLB
+	TAX
+	PLB
+	PLB
+	PLB
+	TAX
+	PLB
+	PLB
+	PLB
+	PLB
+	LDA $ADAD
+	PLB
+	LDA $ADAD
+	PLB
+	LDA $ADAD
+	LDA $AFAD
+	LDA ($16),Y
+	ORA $17BF
+	TRB $0401
+	BRK #$06
+	INY
+	ORA [$50]
+	PHP
+	ORA ($09),Y
+	COP #$A3
+	CMP $C1
+	CMP ($A1,X)
+	LDA $E3,S
+	CPY #$A0
+	LDA $C3,S
+	CMP ($C1,X)
+	LDA ($A3,X)
+	SBC $C0
+	LDY #$A1
+	CMP ($C1,X)
+	CMP ($A1,X)
+	LDA ($E1,X)
+	CPY #$A0
+	LDA ($C1,X)
+	CMP ($C1,X)
+	LDA ($A1,X)
+	SBC ($C0,X)
+	LDY #$A3
+	CMP $C1
+	CMP ($A1,X)
+	LDA $E3,S
+	CPY #$A0
+	LDA $C3,S
+	CMP ($C1,X)
+	LDA ($A3,X)
+	SBC $C0
+	LDY #$A1
+	CMP ($C1,X)
+	CMP ($A1,X)
+	LDA ($E1,X)
+	CPY #$A0
+	LDA ($C1,X)
+	CMP ($C1,X)
+	LDA ($A1,X)
+	SBC ($C0,X)
+	LDY #$AA
+	PLB
+	PLB
+	PLB
+	TAX
+	PLB
+	PLB
+	PLB
+	TAX
+	PLB
+	PLB
+	PLB
+	TAX
+	PLB
+	PLB
+	PLB
+	PLB
+	LDA $ADAD
+	PLB
+	LDA $ADAD
+	PLB
+	LDA $ADAD
+	PLB
+	LDA $ADAD
+	TAX
+	PLB
+	PLB
+	PLB
+	TAX
+	PLB
+	PLB
+	PLB
+	TAX
+	PLB
+	PLB
+	PLB
+	TAX
+	PLB
+	PLB
+	PLB
+	PLB
+	LDA $ADAD
+	PLB
+	LDA $ADAD
+	PLB
+	LDA $ADAD
+	LDA $AFAD
+	LDA ($16),Y
+	ASL $1759
+	TRB $0401
+	BRK #$04
+	BRK #$04
+	BRK #$0B
+	COP #$06
+	INY
+	ORA [$64]
+	PHP
+	TSB $09
+	COP #$1D
+	ORA $D8C0,Y
+	ASL $0E,X
+	SBC ($17),Y
+	ORA [$17],Y
+	ORA [$00],Y
+	BRK #$00
+	BRK #$00
+	CMP $2000,X
+	ORA $300D
+	ORA $0D6F
+	TXY
+	ORA $0DD1
+	SBC ($0D,X)
+	PLX
+	ORA $0DFB
+	JSR ($0705,X)
+	BRK #$1C
+	ORA ($04,X)
+	PHP
+	ASL $64
+	ORA [$3C]
+	PHP
+	ORA #$09
+	ORA $1D
+	TRB $1A
+	BRK #$01
+	INC A
+	COP #$78
+	TAX
+	TAX
+	TAX
+	DEX
+	LDY #$CC
+	DEX
+	LDY #$A0
+	TAX
+	TAX
+	TAX
+	DEX
+	LDY #$CC
+	DEX
+	LDY #$AC
+	LDA $8080
+	LDA $8080AD
+	LDA $8080AD
+	LDA $8080AD
+	LDY $E0EA
+	ORA [$0D],Y
+	AND $17,X
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND ($08)
+	PHP
+	ORA #$03
+	ORA $CA15,X
+	TAX
+	DEX
+	TAX
+	DEX
+	TAX
+	DEX
+	TAX
+	DEX
+	TAX
+	DEX
+	TAX
+	DEX
+	TAX
+	DEX
+	TAX
+	CMP ($A1,X)
+	CMP ($A1,X)
+	CMP ($A1,X)
+	CMP ($A1,X)
+	NOP
+	CPX #$17
+	ORA $1771
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND [$08],Y
+	PHP
+	ORA #$03
+	ORA $AA15,X
+	TAX
+	TAX
+	DEX
+	LDY #$CC
+	DEX
+	LDY #$A0
+	TAX
+	TAX
+	TAX
+	DEX
+	LDY #$CC
+	DEX
+	LDY #$AC
+	LDA $8080
+	LDA $8080AD
+	LDA $8080AD
+	LDA $8080AD
+	LDY $E0EA
+	ORA [$0D],Y
+	STA $1C17,X
+	ORA ($04,X)
+	BRK #$06
+	INY
+	ORA [$50]
+	PHP
+	ORA ($09),Y
+	COP #$17
+	ORA $17D3
+	TRB $0401
+	BRK #$04
+	BRK #$04
+	BRK #$0B
+	COP #$06
+	INY
+	ORA [$64]
+	PHP
+	TSB $09
+	COP #$1D
+	ORA $1720,Y
+	ORA $17E3
+	ORA [$17],Y
+	ORA [$00],Y
+	BRK #$00
+	BRK #$00
+	CLC
+	COP #$20
+	ORA $300D
+	ORA $0E91
+	PLD
+	ASL $0F83
+	TCS
+	ORA $360F35
+	ORA $050537
+	BRK #$1C
+	ORA ($04,X)
+	PHP
+	ASL $64
+	ORA [$3C]
+	PHP
+	ASL A
+	ORA #$03
+	ORA $1A14,X
+	BRK #$01
+	INC A
+	COP #$78
+	CPX #$E0
+	CMP $A1
+	INY
+	LDA $AA
+	CPX $CAA0
+	INY
+	DEC $A0
+	SBC $A0E0
+	DEX
+	CMP ($D2)
+	LDY $D1,X
+	LDA $B1AF
+	CMP ($B4)
+	CMP ($AD),Y
+	LDA $B4D2B1
+	SBC $A0E0
+	CMP $A0CCCD
+	CMP $CCA0
+	LDY #$CD
+	LDY #$CF
+	CMP $A0CF
+	SBC ($E0),Y
+	LDY #$CF
+	CMP ($CC),Y
+	LDY #$CD
+	LDY #$CC
+	LDY #$CD
+	LDY #$CF
+	CMP $A0CF
+	SBC ($E0),Y
+	LDY #$E0
+	ASL $0D,X
+	AND $17,X
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND ($08)
+	PHP
+	ORA #$03
+	ORA $A115,X
+	LDA ($A1,X)
+	LDA ($A1,X)
+	TAX
+	PLB
+	LDY $ADA1
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	ASL $0D,X
+	STA ($17,S),Y
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND [$08],Y
+	PHP
+	ORA #$03
+	ORA $E015,X
+	CPX #$C5
+	LDA ($C8,X)
+	LDA $AA
+	CPX $CAA0
+	INY
+	DEC $A0
+	SBC $A0E0
+	DEX
+	CMP ($D2)
+	LDY $D1,X
+	LDA $B1AF
+	CMP ($B4)
+	CMP ($AD),Y
+	LDA $B4D2B1
+	SBC $A0E0
+	CMP $A0CCCD
+	CMP $CCA0
+	LDY #$CD
+	LDY #$CF
+	CMP $A0CF
+	SBC ($E0),Y
+	LDY #$CF
+	CMP ($CC),Y
+	LDY #$CD
+	LDY #$CC
+	LDY #$CD
+	LDY #$CF
+	CMP $A0CF
+	SBC ($E0),Y
+	LDY #$E0
+	ASL $0E,X
+	AND $1C17
+	ORA ($04,X)
+	BRK #$06
+	INY
+	ORA [$50]
+	PHP
+	ORA ($09),Y
+	COP #$A1
+	LDA ($A1,X)
+	LDA ($A1,X)
+	TAX
+	PLB
+	LDY $ADA1
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDX $A6
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	LDA ($AD,X)
+	ASL $0E,X
+	STA $17
+	TRB $0401
+	BRK #$04
+	BRK #$04
+	BRK #$0B
+	COP #$06
+	INY
+	ORA [$64]
+	PHP
+	TSB $09
+	COP #$1D
+	ORA $D8C0,Y
+	ASL $0F,X
+	ORA $1717,X
+	ORA [$17],Y
+	BRK #$00
+	BRK #$00
+	BRK #$53
+	COP #$20
+	ORA $300D
+	ORA $0EE7
+	STA $0E,X
+	TAY
+	ORA $700F54
+	ORA $720F71
+	ORA $05
+	RTI
+	TRB $0401
+	PHP
+	ASL $64
+	ORA [$3C]
+	PHP
+	ORA #$09
+	ORA $1D
+	TRB $1A
+	BRK #$01
+	INC A
+	COP #$78
+	LDA $C5
+	CMP $A1
+	CMP $E8
+	INX
+	CMP ($A0,X)
+	INY
+	LDY #$C5
+	LDY #$CA
+	CPY $CAAB
+	INY
+	LDA $A8
+	DEX
+	LDX $C8
+	CMP $A1
+	LDA $C0,S
+	LDY #$C1
+	LDY #$C8
+	LDY #$C5
+	LDY #$CA
+	CPY $CAAB
+	INY
+	LDA $A8
+	DEX
+	LDX $C8
+	CMP $A1
+	LDA $C0,S
+	CPY #$A0
+	TAY
+	LDX $A5
+	CMP ($A0,X)
+	TAX
+	CMP ($C3,X)
+	LDA ($A3,X)
+	CMP $A0
+	TAY
+	LDX $A5
+	CMP ($A0,X)
+	TAX
+	CMP $EDAD
+	CPY #$A8
+	LDX $A5
+	CMP ($A0,X)
+	TAX
+	CMP ($C3,X)
+	LDA ($A3,X)
+	CMP $A0
+	CPY $A0
+	CMP $A0
+	SBC ($E0,X)
+	CPY #$A8
+	LDX $A5
+	CMP ($A0,X)
+	TAX
+	CMP ($C3,X)
+	LDA ($A3,X)
+	CMP $A0
+	TAY
+	LDX $A5
+	CMP ($A0,X)
+	TAX
+	CMP $EDAD
+	CPY #$A8
+	LDX $A5
+	CMP ($A0,X)
+	TAX
+	CMP ($C3,X)
+	LDA ($A3,X)
+	CMP $A0
+	CPY $A0
+	CMP $A0
+	SBC ($E0,X)
+	LDA ($C1,X)
+	CMP ($A1,X)
+	CMP $A5
+	CMP ($AA,X)
+	INX
+	LDA ($C1,X)
+	CMP ($A1,X)
+	CMP $E5
+	CPX #$A1
+	CMP ($C1,X)
+	LDA ($C3,X)
+	LDA $C1
+	TAX
+	INX
+	ASL $0D,X
+	AND $17,X
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND ($08)
+	PHP
+	ORA #$03
+	ORA $A515,X
+	CMP $C5
+	LDA ($C5,X)
+	INX
+	INX
+	CMP ($A0,X)
+	INY
+	LDY #$C5
+	LDY #$CA
+	CPY $CAAB
+	INY
+	LDA $A8
+	DEX
+	LDX $C8
+	CMP $A1
+	LDA $CC,S
+	LDY #$C1
+	LDY #$C8
+	LDY #$C5
+	LDY #$CA
+	CPY $CAAB
+	INY
+	LDA $A8
+	DEX
+	LDX $C8
+	CMP $A1
+	LDA $CC,S
+	CPY #$A0
+	TAY
+	LDX $A5
+	CMP ($A0,X)
+	TAX
+	CMP ($C3,X)
+	LDA ($A3,X)
+	CMP $A0
+	TAY
+	LDX $A5
+	CMP ($A0,X)
+	TAX
+	CMP $EDAD
+	CPY #$A8
+	LDX $A5
+	CMP ($A0,X)
+	TAX
+	CMP ($C3,X)
+	LDA ($A3,X)
+	CMP $A0
+	CPY $A0
+	CMP $A0
+	SBC ($E0,X)
+	CPY #$A8
+	LDX $A5
+	CMP ($A0,X)
+	TAX
+	CMP ($C3,X)
+	LDA ($A3,X)
+	CMP $A0
+	TAY
+	LDX $A5
+	CMP ($A0,X)
+	TAX
+	CMP $EDAD
+	CPY #$A8
+	LDX $A5
+	CMP ($A0,X)
+	TAX
+	CMP ($C3,X)
+	LDA ($A3,X)
+	CMP $A0
+	CPY $A0
+	CMP $A0
+	SBC ($E0,X)
+	LDA ($C1,X)
+	CMP ($A1,X)
+	CMP $A5
+	CMP ($AA,X)
+	INX
+	LDA ($C1,X)
+	CMP ($A1,X)
+	CMP $E5
+	CPX #$A1
+	CMP ($C1,X)
+	LDA ($C3,X)
+	LDA $C1
+	TAX
+	INX
+	ASL $0D,X
+	SBC #$17
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND [$08],Y
+	PHP
+	ORA #$03
+	ORA $2015,X
+	ASL $0E,X
+	STA [$17],Y
+	TRB $0401
+	BRK #$06
+	INY
+	ORA [$50]
+	PHP
+	ORA ($09),Y
+	COP #$A5
+	CMP $C5
+	LDA ($C5,X)
+	INX
+	INX
+	CMP ($A0,X)
+	INY
+	LDY #$C5
+	LDY #$CA
+	CPY $CAAB
+	INY
+	LDA $A8
+	DEX
+	LDX $C8
+	CMP $A1
+	LDA $CC,S
+	LDY #$C1
+	LDY #$C8
+	LDY #$C5
+	LDY #$CA
+	CPY $CAAB
+	INY
+	LDA $A8
+	DEX
+	LDX $C8
+	CMP $A1
+	LDA $CC,S
+	CPY #$A0
+	TAY
+	LDX $A5
+	CMP ($A0,X)
+	TAX
+	CMP ($C3,X)
+	LDA ($A3,X)
+	CMP $A0
+	TAY
+	LDX $A5
+	CMP ($A0,X)
+	TAX
+	CMP $EDAD
+	CPY #$A8
+	LDX $A5
+	CMP ($A0,X)
+	TAX
+	CMP ($C3,X)
+	LDA ($A3,X)
+	CMP $A0
+	CPY $A0
+	CMP $A0
+	SBC ($E0,X)
+	CPY #$A8
+	LDX $A5
+	CMP ($A0,X)
+	TAX
+	CMP ($C3,X)
+	LDA ($A3,X)
+	CMP $A0
+	TAY
+	LDX $A5
+	CMP ($A0,X)
+	TAX
+	CMP $EDAD
+	CPY #$A8
+	LDX $A5
+	CMP ($A0,X)
+	TAX
+	CMP ($C3,X)
+	LDA ($A3,X)
+	CMP $A0
+
+label_049DF0:
+	CPY $A0
+
+label_049DF2:
+	CMP $A0
+	SBC ($E0,X)
+	LDA ($C1,X)
+	CMP ($A1,X)
+	CMP $A5
+	CMP ($AA,X)
+	INX
+	LDA ($C1,X)
+	CMP ($A1,X)
+	CMP $E5
+	CPX #$A1
+	CMP ($C1,X)
+	LDA ($C3,X)
+	LDA $C1
+	TAX
+	INX
+	ASL $0E,X
+	TAX
+	ORA [$1C],Y
+	ORA ($04,X)
+	BRK #$04
+	BRK #$04
+	BRK #$0B
+	COP #$06
+	INY
+	ORA [$64]
+
+label_049E21:
+	PHP
+	TSB $09
+	COP #$1D
+	ORA $C0C0,Y
+
+label_049E29:
+	CLD
+	CPY #$16
+	ORA $171756
+
+label_049E2D:
+	ORA [$17],Y
+	BRK #$00
+	BRK #$00
+	BRK #$00
+	BRK #$A0
+	ORA ($20,X)
+	ORA $300D
+
+label_049E3D:
+
+label_049E3F:
+	ORA $0D8F
+	SBC $0E420E
+
+label_049E43:
+
+label_049E45:
+	STA ($0E,S),Y
+	LDA $BE0E,X
+	ASL $05BF
+	COP #$20
+
+label_049E4F:
+	TRB $0401
+	PHP
+	ASL $64
+
+label_049E56:
+	ORA [$3C]
+	PHP
+	ASL $0309
+	ORA $1A14,X
+	BRK #$01
+	INC A
+	COP #$78
+	LDY #$80
+	LDA ($80)
+	STA ($A0)
+	LDA ($8F)
+	LDA ($B2,S),Y
+	BCS label_049DF0
+	BCS label_049DF2
+	BCS label_049E3F
+	BRA label_049E21
+	STY $80AD
+
+label_049E77:
+
+label_049E78:
+	LDA $8D80
+	BRA label_049E29
+	BRA label_049E2D
+
+label_049E80:
+	LDY #$80
+	LDX $AD8E
+	PLB
+	STX $B2E9
+	BRA label_049E3D
+	BRA label_049E3F
+	CPY #$B3
+	LDA ($B0)
+	BRA label_049E43
+	BRA label_049E45
+	WAI
+	BRA label_049E43
+	STA $80AE
+	LDX $8E80
+	BRA label_049E80
+	STA ($91)
+	BCC label_049E4F
+	BRA label_049E56
+	DEC $16CE
+	ORA $1735
+	TRB $0401
+	BRK #$06
+	STX $07,Y
+	AND ($08)
+	PHP
+	ORA #$03
+	ORA $B215,X
+	STA ($A9),Y
+	STA ($88),Y
+	LDA ($A9),Y
+	STA $A7A9A9
+	STA $A78FA7
+	CMP [$80]
+	LDA [$87]
+	LDA [$8C]
+	LDA [$8C]
+	STA [$8C]
+	LDA [$8C]
+	LDA [$89]
+	PHB
+	STA $86A6
+	LDX $A7
+	STX $E6
+	LDX $AE91
+	STA ($AE),Y
+	BRA label_049E78
+	BCC label_049E77
+	LDA $8FABAF
+	PLB
+	STA $80C7AB
+	LDA [$87]
+	TAY
+	STA $8DA8
+	DEY
+	PHB
+	STX $8E90
+	LDA #$8B
+	BIT #$8B
+	DEY
+	DEY
+	DEY
+	LDA [$8C]
+	LDA [$C9]
+	CMP $16,X
+	ORA $1791
+	TRB $0401
+
+label_049F0D:
+	BRK #$06
+	STX $07,Y
+	AND [$08],Y
+	PHP
+	ORA #$03
+	ORA $A215,X
+	LDX #$A2
+	LDA ($AB,X)
+	PLB
+	LDA $AB,S
+	LDA [$AB]
+	LDA #$A8
+	LDY $AB
+	LDA [$A7]
+	LDA #$A9
+	LDA #$AB
+	LDA ($A9,X)
+	LDA #$A9
+	LDX #$A9
+	LDX #$A9
+	LDX #$82
+	LDA ($8B,X)
+	LDA #$A2
+	LDX #$A2
+	LDA ($AB,X)
+	PLB
+	LDA $AB,S
+	LDA [$AB]
+	LDA [$A6]
+	LDY $AB
+	LDA [$A7]
+	TAY
+	PLB
+	TAY
+	PLB
+	LDA #$A2
+	LDX #$A3
+	LDY $AB
+	LDA #$A1
+	LDX #$A9
+	PLB
+	LDA ($16,X)
+	ORA $17F1
+	TRB $0401
+	BRK #$06
+	INY
+	ORA [$50]
+	PHP
+	ORA ($09),Y
+	COP #$A2
+
+label_049F6C:
+	LDX #$A2
+
+label_049F6E:
+	LDA ($AB,X)
+	PLB
+	LDA $AB,S
+	LDA [$AB]
+	LDA #$A8
+	LDY $AB
+	LDA [$A7]
+	LDA #$A9
+	LDA #$AB
+	LDA ($A9,X)
+	LDA #$A9
+	LDX #$A9
+	LDX #$A9
+	LDX #$82
+	LDA ($8B,X)
+	LDA #$A2
+	LDX #$A2
+	LDA ($AB,X)
+	PLB
+	LDA $AB,S
+	LDA [$AB]
+	LDA [$A6]
+	LDY $AB
+	LDA [$A7]
+	TAY
+	PLB
+	TAY
+	PLB
+	LDA #$A2
+	LDX #$A3
+	LDY $AB
+	LDA #$A1
+	LDX #$A9
+	PLB
+	LDA ($16,X)
+	ASL $1744
+	TRB $0401
+	BRK #$04
+	BRK #$04
+	BRK #$0B
+	COP #$06
+	INY
+	ORA [$64]
+	PHP
+	TSB $09
+	COP #$1D
+	ORA $B8A0,Y
+	LDY #$B8
+	LDY #$B8
+	LDY #$B8
+	LDY #$B8
+	LDY #$B8
+	LDY #$B8
+	BRA label_049F6C
+	BRA label_049F6E
+	ASL $0E,X
+	STA $17,X
+	ORA [$17],Y
+	ORA [$00],Y
+	BRK #$00
+	BRK #$78
+	LDA $4210
+	LDA #$01
+	STA $4200
+	LDA #$80
+	STA $2100
+	LDX #$00
+	ORA ($CA,X)
+
+label_049FF2:
+	BNE label_049FF2
+	REP #$20
+	LDA #$0000
+	INC $0011
+	SEP #$20
+
+label_049FFF:
+	LDA $4212
+	AND #$01
+	BNE label_049FFF
+	LDA $0013
+	STA $0014
+	LDA $4218
+	STA $0013
+	LDA $0015
+	STA $0016
+	LDA $4219
+	STA $0015
+	JSR label_04A02D
+	LDA #$0F
+	STA $2100
+	LDA #$81
+	STA $4200
+	CLI
+	RTI
+
+label_04A02D:
+	JSR label_04A044
+	LDA $0010
+	ASL A
+	TAY
+	LDX $A03E,Y
+	STX $06AB
+	JMP ($06AB)
+	CPY $17A0
+	LDX #$CE
+	SBC $11AD
+
+label_04A044:
+	BRK #$29
+	ORA [$F0]
+	ORA ($60,X)
+	LDA $0019
+	ASL A
+	TAY
+	LDX #$0F
+	BRK #$A9
+	ORA ($8D,X)
+	AND ($21,X)
+
+label_04A059:
+	LDA $A078,Y
+	STA $2122
+	LDA $A079,Y
+	STA $2122
+	INY
+	INY
+	DEX
+	BNE label_04A059
+	LDA $0019
+	SEC
+	SBC #$01
+	BPL label_04A074
+	LDA #$1B
+
+label_04A074:
+	STA $0019
+	RTS
+	BRK #$78
+	BRK #$70
+	BRK #$68
+	BRK #$60
+	BRK #$58
+	BRK #$50
+	BRK #$48
+	BRK #$40
+	BRK #$38
+	BRK #$30
+	BRK #$28
+	BRK #$20
+	BRK #$18
+	BRK #$10
+	BRK #$08
+	BRK #$10
+	BRK #$18
+	BRK #$20
+	BRK #$28
+	BRK #$30
+	BRK #$38
+	BRK #$40
+	BRK #$48
+	BRK #$50
+	BRK #$58
+	BRK #$60
+	BRK #$68
+	BRK #$70
+	BRK #$78
+	BRK #$70
+	BRK #$68
+	BRK #$60
+	BRK #$58
+	BRK #$50
+	BRK #$48
+	BRK #$40
+	BRK #$38
+	BRK #$30
+	BRK #$28
+	BRK #$20
+	BRK #$18
+	BRK #$10
+	JSR label_04A174
+	JSR label_04A1B7
+	LDA $0015
+	AND #$10
+	BNE label_04A0DA
+	RTS
+
+label_04A0DA:
+	LDA $0016
+	AND #$10
+	BEQ label_04A0E2
+	RTS
+
+label_04A0E2:
+	LDA #$00
+	JSL $7F0000
+	REP #$10
+	LDA #$4B
+	STA $0000
+	LDA #$4A
+	STA $0001
+	LDA #$48
+	STA $0002
+
+label_04A0F8:
+	LDX #$0000
+
+label_04A0FC:
+	LDA $A13D,X
+	STA $0100,X
+	INX
+	CPX #$0008
+	BNE label_04A0FC
+	LDA $0017
+	ASL A
+	ASL A
+	CLC
+	ADC $0018
+	LDX #$0000
+	TAX
+	LDA $A160,X
+	STA $0101
+	LDA $0017
+	CMP #$03
+	BCC label_04A13A
+	CMP #$04
+	BEQ label_04A12B
+	LDA $0018
+	BEQ label_04A13A
+
+label_04A12B:
+	LDX #$0000
+
+label_04A12E:
+	LDA $A145,X
+	STA $0105,X
+	INX
+	CPX #$001B
+	BNE label_04A12E
+
+label_04A13A:
+	JMP $0100
+	LDA #$00
+	STA $8000
+	JMP ($FFFC)
+	LDX #$0000
+
+label_04A148:
+	LDA $018000,X
+	STA $0800,X
+	INX
+	CPX #$0A00
+	BNE label_04A148
+	LDA #$80
+	PHA
+	PLB
+	JML $800800
+	JMP $0800
+	DEC $C8
+	STX $8FCA
+	BCC label_04A0F8
+	STA ($93)
+	STY $95,X
+
+label_04A16A:
+	STX $00,Y
+	CPY $9897
+	STA $9B9A,Y
+	STZ $13AD
+
+label_04A174:
+	BRK #$29
+	BRA label_04A16A
+	ORA [$AD]
+	TRB $00
+	AND #$80
+	BEQ label_04A191
+	LDA $0015
+	AND #$80
+	BEQ label_04A190
+	LDA $0016
+	AND #$80
+	BEQ label_04A19F
+
+label_04A190:
+	RTS
+
+label_04A191:
+	LDA $0017
+	CLC
+	ADC #$01
+	CMP #$05
+	BNE label_04A1A9
+	LDA #$00
+	BRA label_04A1A9
+
+label_04A19F:
+	LDA $0017
+	SEC
+	SBC #$01
+	BPL label_04A1A9
+	LDA #$04
+
+label_04A1A9:
+	STA $0017
+	LDA #$02
+	STA $0010
+	LDA #$05
+	STA $2140
+	RTS
+
+label_04A1B7:
+	LDA $0015
+	AND #$08
+	BEQ label_04A1DF
+	LDA $0016
+	AND #$08
+	BEQ label_04A1C6
+	RTS
+
+label_04A1C6:
+	LDA $0018
+	SEC
+	SBC #$01
+	BPL label_04A209
+	LDA $0017
+	SEC
+	SBC #$01
+	BPL label_04A1D8
+	LDA #$04
+
+label_04A1D8:
+	STA $0017
+	LDA #$03
+	BRA label_04A209
+
+label_04A1DF:
+	LDA $0015
+	AND #$04
+	BEQ label_04A1ED
+	LDA $0016
+	AND #$04
+	BEQ label_04A1EE
+
+label_04A1ED:
+	RTS
+
+label_04A1EE:
+	LDA $0018
+	CLC
+	ADC #$01
+	CMP #$04
+	BNE label_04A209
+	LDA $0017
+	CLC
+	ADC #$01
+	CMP #$05
+	BNE label_04A204
+	LDA #$00
+
+label_04A204:
+	STA $0017
+	LDA #$00
+
+label_04A209:
+	STA $0018
+	LDA #$02
+	STA $0010
+	LDA #$1C
+	STA $2140
+	RTS
+	LDA #$02
+	STA $0010
+	STZ $0017
+	STZ $0018
+	STZ $0019
+	LDA #$00
+	STA $0017
+	LDA #$00
+	STA $0018
+	JSR $ECA7
+	LDX #$01DD
+	LDY #$A377
+	STZ $2116
+	STZ $2117
+
+label_04A23E:
+	PHX
+	LDX #$0000
+
+label_04A242:
+	JSR label_04A28E
+	JSR label_04A28E
+	JSR label_04A28E
+	JSR label_04A28E
+	INX
+	INX
+	INX
+	INX
+	CPX #$0020
+	BNE label_04A242
+	LDX #$0000
+
+label_04A25A:
+	LDA $06AB,X
+	STA $2118
+	LDA $06AC,X
+	STA $2119
+	INX
+	INX
+	INX
+	INX
+	CPX #$0020
+	BNE label_04A25A
+	LDX #$0000
+
+label_04A272:
+	LDA $06AD,X
+	STA $2118
+	LDA $06AE,X
+	STA $2119
+	INX
+	INX
+	INX
+	INX
+	CPX #$0020
+	BNE label_04A272
+	PLX
+	DEX
+	BNE label_04A23E
+	JMP label_04A2B3
+
+label_04A28E:
+	LDA $0000,Y
+	INY
+	ASL A
+	ROL $AE,X
+	ASL $0A
+	ROL $AD,X
+	ASL $0A
+	ROL $AC,X
+	ASL $0A
+	ROL $AB,X
+	ASL $0A
+	ROL $AE,X
+	ASL $0A
+	ROL $AD,X
+	ASL $0A
+	ROL $AC,X
+	ASL $0A
+	ROL $AB,X
+	ASL $60
+
+label_04A2B3:
+	LDX #$7C00
+	STX $2116
+	LDX #$DF17
+	LDY #$0380
+
+label_04A2BF:
+	LDA $0000,X
+	STA $2118
+	LDA $0001,X
+	AND #$03
+	STA $06AB
+	LDA $0001,X
+	AND #$18
+	ASL A
+	ASL A
+	ASL A
+	ORA $06AB
+	STA $06AB
+	LDA $0001,X
+	AND #$80
+	LSR A
+	LSR A
+	ORA $06AB
+	STA $06AB
+	LDA $0001,X
+	AND #$60
+	LSR A
+	LSR A
+	LSR A
+	ORA $06AB
+	STA $2119
+	INX
+	INX
+	DEY
+	BNE label_04A2BF
+	LDX #$E617
+	LDY #$0000
+
+label_04A301:
+	LDA $0000,X
+	STA $001B,Y
+	LDA $0001,X
+	AND #$03
+	STA $06AB
+	LDA $0001,X
+	AND #$18
+	ASL A
+	ASL A
+	ASL A
+	ORA $06AB
+	STA $06AB
+	LDA $0001,X
+	AND #$80
+	LSR A
+	LSR A
+	ORA $06AB
+	STA $06AB
+	LDA $0001,X
+	AND #$60
+	LSR A
+	LSR A
+	LSR A
+	ORA $06AB
+	STA $001C,Y
+	INX
+	INX
+	INY
+	INY
+	CPY #$0690
+	BNE label_04A301
+	LDX #$001B
+	LDY #$0014
+	LDA #$04
+	STA $001A
+	LDA #$86
+	STA $2116
+	LDA #$78
+	STA $2117
+	JSR $EDB7
+	LDY #$0014
+	LDA #$A6
+	STA $2116
+	LDA #$78
+	STA $2117
+	JSR $EDB7
+	LDA #$03
+	STA $212C
+	LDA #$09
+	JSL $7F0000
+	REP #$10
+	RTS
